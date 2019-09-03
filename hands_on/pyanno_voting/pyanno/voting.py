@@ -100,3 +100,33 @@ def labels_frequency(annotations, nclasses):
         freq[k] is the frequency of elements of class k in `annotations`, i.e.
         their count over the number of total of observed (non-missing) elements
     """
+    # Transform list of lists into a np array
+    annot = np.array(annotations)
+	    
+    # Compute the frequency of each value in the matrix 
+    unique, counts = np.unique(annot, return_counts=True)
+
+    # Create a dictionary with the frequency values 
+    freq = dict(zip(unique, counts))
+    
+    # Good values 
+    good_values = annot.size - freq[-1]
+    
+
+    # Remove -1 freq from the dict
+    freq.pop(-1, None)
+
+
+    freq_list = []
+    classes = list(range(nclasses))
+
+    for class_value in classes: 
+        if class_value in freq.keys():
+            freq_list.append(freq[class_value]/good_values)
+
+        else: 
+            freq_list.append(0)
+
+    return np.array(freq_list)
+       
+
