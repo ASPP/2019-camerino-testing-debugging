@@ -1,5 +1,5 @@
 import numpy as np
-
+from numpy.testing import assert_array_equal
 from pyanno import voting
 from pyanno.voting import MISSING_VALUE as MV
 
@@ -16,6 +16,9 @@ def test_labels_count():
     result = voting.labels_count(annotations, nclasses)
     assert result == expected
 
+def test_labels_frequency():
+    call_labels = voting.labels_frequency([[1, 1, 2], [-1, 1, 2]], 4)
+    assert_array_equal(call_labels, np.array([ 0. ,  0.6,  0.4,  0. ]))
 
 def test_majority_vote():
     annotations = [
