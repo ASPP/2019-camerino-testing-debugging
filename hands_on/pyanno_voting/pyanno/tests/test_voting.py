@@ -44,7 +44,12 @@ def test_majority_vote_empty_item():
 
 
 def test_labels_frequency():
+    #Given
     testList = [[1, 1, 2], [-1, 1, 2]]
     expectedValue = np.array([ 0. ,  0.6,  0.4,  0. ])
 
-    np.testing.assert_array_equal(voting.labels_frequency(testList, 4), expectedValue)
+    #When
+    output = voting.labels_frequency(testList, 4)
+
+    #Then
+    assert np.allclose(output, expectedValue)
