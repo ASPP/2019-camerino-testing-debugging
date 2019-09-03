@@ -104,5 +104,5 @@ def labels_frequency(annotations, nclasses):
     label_freq = np.empty(nclasses)
     for i in range(nclasses):
         num_votes = np.sum(annotations == i)
-        label_freq[i]=num_votes/total_votes
+        label_freq[i] = num_votes / total_votes
     return label_freq
