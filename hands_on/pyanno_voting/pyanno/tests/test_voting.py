@@ -6,6 +6,7 @@ from numpy.testing import assert_array_almost_equal
 
 
 def test_labels_count():
+    # Given
     annotations = [
         [1,  2, MV, MV],
         [MV, MV,  3,  3],
@@ -14,7 +15,11 @@ def test_labels_count():
     ]
     nclasses = 5
     expected = [0, 3, 1, 3, 0]
+    
+    # When
     result = voting.labels_count(annotations, nclasses)
+    
+    # Then
     assert result == expected
 
 
@@ -44,10 +49,14 @@ def test_majority_vote_empty_item():
     assert result == expected
 
 def test_label_frequency():
-
-    function_result = voting.labels_frequency([[1, 1, 2], [-1, 1, 2]], 4)
-
+    # Given 
+    matrix = [[1, 1, 2], [-1, 1, 2]]
+    classes = 4
     expected_result = np.array([ 0. ,  0.6,  0.4,  0. ])
 
+    # When
+    function_result = voting.labels_frequency([[1, 1, 2], [-1, 1, 2]], 4)
+
+    # Then
     assert_array_almost_equal(function_result, expected_result, decimal=6)
-	#
+
