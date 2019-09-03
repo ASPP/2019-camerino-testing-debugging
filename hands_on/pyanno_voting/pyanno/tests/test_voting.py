@@ -5,6 +5,7 @@ from pyanno.voting import MISSING_VALUE as MV
 
 
 def test_labels_count():
+    # Given 
     annotations = [
         [1,  2, MV, MV],
         [MV, MV,  3,  3],
@@ -13,7 +14,9 @@ def test_labels_count():
     ]
     nclasses = 5
     expected = [0, 3, 1, 3, 0]
+    # When
     result = voting.labels_count(annotations, nclasses)
+    # Then
     assert result == expected
 
 
