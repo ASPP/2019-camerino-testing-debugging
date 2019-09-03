@@ -7,6 +7,9 @@ from math import isclose
 
 #I just inserted a comment here to test pull request cyclus!
 
+def function_1():
+    pass
+
 def test_labels_count():
     annotations = [
         [1,  2, MV, MV],
